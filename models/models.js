@@ -2,11 +2,9 @@ var path = require('path');
 
 var url = process.env.DATABASE_URL.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
 
-
-
-console.log(process.env.DATABASE_URL);
-console.log(process.env.DATABASE_STORAGE);
-console.log(url);
+//console.log(process.env.DATABASE_URL);
+//console.log(process.env.DATABASE_STORAGE);
+//console.log(url);
 
 var DB_name		=	(url[6]||null);
 var user		=	(url[2]||null);
@@ -45,6 +43,10 @@ Quiz.count().success(function (count){
 		Quiz.create({
 			pregunta:'Capital de Italia',
 			respuesta:'Roma'
+		});
+		Quiz.create({
+			pregunta:'Capital de Portugal',
+			respuesta:'Lisboa'
 		})
 		.success(function  () {
 			console.log('Base de datos inicializada');
