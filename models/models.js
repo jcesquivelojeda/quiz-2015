@@ -1,6 +1,6 @@
 var path = require('path');
 
-var url = process.env.DATABASE_URL.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
+var url = process.env.DATABASE_URL2.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
 
 //console.log(process.env.DATABASE_URL);
 //console.log(process.env.DATABASE_STORAGE);
@@ -42,10 +42,12 @@ Quiz.count().success(function (count){
 	//si la tabla esta vacia se inicializa con esta pregunta
 	if (count === 0) {
 		Quiz.create({
+			tema:'geografia',
 			pregunta:'Capital de Italia',
 			respuesta:'Roma'
 		});
 		Quiz.create({
+			tema:'geografia',
 			pregunta:'Capital de Portugal',
 			respuesta:'Lisboa'
 		})

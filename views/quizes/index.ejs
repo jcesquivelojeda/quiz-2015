@@ -29,11 +29,11 @@ for(i=0;i<quizes.length;i++){ %>
 <a  class="btn btn-default btn-block " style="margin:1px 0px" href="quizes/<%= quizes[i].id %>"> <%= quizes[i].pregunta %></a>
 </div>
 <div class="col-lg-1">
-<a  class="btn btn-info btn-block col-lg-4" style="margin:1px 0px" href="quizes/<%= quizes[i].id %>/edit"> Editar</a>
+<a  class="btn btn-success btn-block" style="margin:1px 0px" href="quizes/<%= quizes[i].id %>/edit"> Editar</a>
 </div>
 <div class="col-lg-1">
 <form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">
-<button type="submit" onClick="return confirm('Borrar Pregunta: <%= quizes[i].pregunta %>');" class="btn btn-danger">
+<button type="submit" style="margin:1px 0px" onClick="return confirm('Borrar Pregunta: <%= quizes[i].pregunta %>');" class="btn btn-danger btn-block ">
 Borrar
 </button>
 </form>
