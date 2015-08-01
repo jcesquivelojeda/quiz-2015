@@ -1,17 +1,53 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Preguntas</h3>
+  </div>
+  <div class="panel-body" >
+
+
 <form method="get" action="/quizes" enctype="application/x-www-form-urlencoded">
-<label for="search">Buscar</label>
-<input type="text" name="search" id="search" autocomplete="off" placeholder="ingrese palabras clave"/>
-<input type="submit" value="buscar">
-</form>
-<table>
+
+<div class="row" >
+ <div class="col-lg-12">
+    <div class="input-group">
+      <input type="text" class="form-control" name="search" id="search" autocomplete="off" placeholder="Ingrese palabras clave">
+      <span class="input-group-btn">
+        <input type="submit" class="btn btn-primary" value="Buscar"/>
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<br/>
+<div style="overflow-y: scroll; height:180px;">
 <% 
 var i=0; 
 for(i=0;i<quizes.length;i++){ %>
-<tr>
-	<td>
-		<a href="quizes/<%= quizes[i].id %>"> <%= quizes[i].pregunta %>
-		</a>
-	</td>
-</tr>
+<div class="row" style="margin-right:0px">
+ <div class="col-lg-10">
+<a  class="btn btn-default btn-block " style="margin:1px 0px" href="quizes/<%= quizes[i].id %>"> <%= quizes[i].pregunta %></a>
+</div>
+<div class="col-lg-1">
+<a  class="btn btn-info btn-block col-lg-4" style="margin:1px 0px" href="quizes/<%= quizes[i].id %>/edit"> Editar</a>
+</div>
+<div class="col-lg-1">
+<form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">
+<button type="submit" onClick="return confirm('Borrar Pregunta: <%= quizes[i].pregunta %>');" class="btn btn-danger">
+Borrar
+</button>
+</form>
+</div>
+</div>
 <% } %>
-</table>
+</div>
+<br/>
+<div class="row">
+<div class="col-lg-12">
+<a href="/quizes/new"><button class="btn btn-primary btn-block" type="button">Crear Pregunta </button></a>
+</div>
+</div>
+
+    
+  </div>
+</div>

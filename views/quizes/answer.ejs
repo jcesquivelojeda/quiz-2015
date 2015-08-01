@@ -1,4 +1,14 @@
-<p>
- <%= respuesta %>
- </p>
-<a href="/quizes/<%= quiz.id %>" >Volver</a>
+<div class="panel panel-default">
+
+  <div class="panel-body">
+    RESPUESTA <%= respuesta %>
+	 </p>
+	 <% if( respuesta === "INCORRECTA") {%>
+	<a href="/quizes/<%= quiz.id %>"  class="btn btn-danger btn-block">Volver a Intentar</a>
+	<% } else {%>
+		<a href="/quizes"  class="btn btn-success btn-block">Volver a listado de preguntas</a>
+    <% } %>
+  </div>
+</div>
+
+

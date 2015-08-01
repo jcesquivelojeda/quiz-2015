@@ -18,7 +18,7 @@ a {
 	color: white; 
 }
 #page-wrap > .main   { 
-	border: 1px solid #999; 
+	border: 1px solid #dedede; 
 	padding: 1%; 
 	margin-bottom: 1px;
 	color: black;
@@ -28,10 +28,36 @@ section > div        {
 	padding: 20px; 
 }
 header, nav, section, footer {
- background: #eee; 
+/* background: #eee; */
  text-align: center;
 }
 
 nav span             { 
 	margin: 0px 10px 0px 0px;
+}
+
+#ErrorMsgs {
+	color: #f61;
+	font-size: smaller;
+}
+
+#autor{
+	margin-top: 0px; 
+    margin-bottom: 0px; 
+}
+
+
+.nav-pills > li.notSelected > a {
+    color: #fff;
+    background-color: #337ab7;
+}
+/*
+.nav-pills > li.active > a {
+    color: #fff;
+    background-color: #31b0d5;
+}
+*/
+.alert {
+
+    margin-bottom: 5px;
 }

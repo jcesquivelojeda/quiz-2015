@@ -1,6 +1,22 @@
 
-<form method="get" enctype="application/x-www-form-urlencoded" action="/quizes/<%= quiz.id %>/answer">
-Pregunta: <%=quiz.pregunta %>
-<input type="text" name="respuesta" autocomplete="off" placeholder="respuesta aqui" required >
-<input type="submit" value="Enviar">
-</form>
+<div class="panel panel-default">
+
+  <div class="panel-body text-left">
+  <div class="row">
+  <div class="col-lg-12">
+
+    <form method="get" enctype="application/x-www-form-urlencoded" action="/quizes/<%= quiz.id %>/answer">
+	PREGUNTA:<strong> <%=quiz.pregunta %></strong>
+	<div style="padding:20px 0px;"/>
+	<input type="text" class="form-control" name="respuesta" autocomplete="off" placeholder="Ingresar respuesta " required >
+	<div style="padding:10px 0px;"/>
+	<input type="submit"  class="btn btn-primary btn-block" value="RESPONDER">
+	</div>
+	</form>
+
+  </div>
+  </div>
+  </div>
+</div>
+
+
