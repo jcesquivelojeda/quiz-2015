@@ -1,7 +1,6 @@
 var path = require('path');
 
-var url = process.env.DATABASE_URL2.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
-
+var url = process.env.DATABASE_URL.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);					  
 //console.log(process.env.DATABASE_URL);
 //console.log(process.env.DATABASE_STORAGE);
 //console.log(url);
