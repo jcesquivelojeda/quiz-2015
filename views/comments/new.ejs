@@ -1,0 +1,14 @@
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Nuevo Comentario</h3>
+  </div>
+  <div class="panel-body">    	
+		<form method="post" action="/quizes/<%=quizid %>/comments/" >
+		<textarea type="text" id="comment" name="comment[texto]" value="" class="form-control" placeholder="Ingrese  su comentario" rows="8"></textarea>
+		<div style="margin: 10px 0px"></div>
+		<button type="submit" class="btn btn-primary btn-block" >Guardar</button>
+		</form>
+  </div>
+</div>

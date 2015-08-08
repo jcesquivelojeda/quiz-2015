@@ -8,11 +8,32 @@
     <form method="get" enctype="application/x-www-form-urlencoded" action="/quizes/<%= quiz.id %>/answer">
 	PREGUNTA:<strong> <%=quiz.pregunta %></strong>
 	<div style="padding:20px 0px;"/>
-	<input type="text" class="form-control" name="respuesta" autocomplete="off" placeholder="Ingresar respuesta " required >
+	<input type="text" class="form-control" name="respuesta" autocomplete="off" placeholder="Ingresar respuesta "  >
 	<div style="padding:10px 0px;"/>
 	<input type="submit"  class="btn btn-primary btn-block" value="RESPONDER">
 	</div>
 	</form>
+
+	<div style="margin: 10px 0px"></div>
+
+		<p style="color:#7e7e7e" class="text-center"><strong>COMENTARIOS</strong></p>
+		<div style="overflow-y: scroll; height:102px;">
+		<% for(index in quiz.comments){ %>
+			<% if(quiz.comments[index].publicado || session.user){ %>
+
+			<div class="well well-sm" > <%= quiz.comments[index].texto%>
+
+			<% if(session.user && !quiz.comments[index].publicado ){%>
+				<div class="text-right">
+				<a class="btn btn-success" href="/quizes/<%= quiz.id %>/comments/<%= quiz.comments[index].id %>/publish" > Publicar </a>
+				</div>
+			<% } %>				 
+			</div>
+			<% } %>		
+		<% } %>
+	</div>
+
+	<p><a href="/quizes/<%= quiz.id%>/comments/new" class="btn btn-info btn-block">Nuevo Comentario</a></p>
 
   </div>
   </div>

@@ -61,6 +61,16 @@ $(document).ready(
   <body>
   <div id="page-wrap">
 	<header class="main" id="h1">
+	<div class="text-right">
+	<% if(!session.user) { %>
+		
+		<span class="well well-sm btn-block "  style="a {color: #FFF;}"><a class="btn btn-primary" href="/login">Iniciar Sesion</a></span>
+
+	<% } else { %>
+	<span   class="well well-sm btn-block " style="a {color: #FFF;}"><span class="glyphicon glyphicon-user"></span> <span style="color:#6e6e6e;padding-right:10px;"> <%= session.user.username %></span> <a class="btn btn-primary" href="/logout">Cerrar Sesion</a></span>
+	
+	<% }  %>
+	</div>
 		<h2 style="color: #00B7FF;">Quiz: el juego de las preguntas</h2>
 	</header>
 	<nav class="main" id="n1" role="navigation">
