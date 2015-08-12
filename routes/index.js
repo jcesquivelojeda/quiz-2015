@@ -3,6 +3,8 @@ var router = express.Router();
 var quizController = require('../controllers/quiz_controllers');
 var commentController = require('../controllers/comment_controllers');
 var sessionController = require('../controllers/session_controllers');
+var statisticsController = require('../controllers/statistics_controllers');
+
 
 
 /* GET home page. */
@@ -24,12 +26,17 @@ router.get('/logout',sessionController.destroy);
 router.get('/quizes',quizController.index);
 router.get('/quizes/:quizId(\\d+)',quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer',quizController.answer);
+router.get('/statistics',statisticsController.mostrarEstadisticas);
+
 
 router.get('/quizes/new',sessionController.loginRequired,quizController.new);
 router.post	('/quizes/create',sessionController.loginRequired,quizController.create);
 router.get('/quizes/:quizId(\\d+)/edit',sessionController.loginRequired,quizController.edit);
 router.put('/quizes/:quizId(\\d+)',sessionController.loginRequired,quizController.update);
 router.delete('/quizes/:quizId(\\d+)',sessionController.loginRequired,quizController.destroy);
+
+
+
 
 router.get('/author', function(req, res) {
   res.render('author',{errors:[]});
@@ -65,5 +72,12 @@ String.prototype.remueveAcentos = function()
 		return ret;
 	});
 
+};
+
+//Truncar numero decimal
+Number.prototype.truncar = function(digitos) {
+    var re = new RegExp("(\\d+\\.\\d{" + digitos + "})(\\d)"),
+        m = this.toString().match(re);
+    return m ? parseFloat(m[1]) : this.valueOf();
 };
 

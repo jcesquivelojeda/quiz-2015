@@ -1,0 +1,143 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Estadísticas</h3>
+  </div>
+  <div class="panel-body">
+  	<div class="row"> 
+  	<div class="col-md-4">
+		<ul class="list-group">
+		  <li class="list-group-item text-left">
+		    <span class="badge"><%=datos.s1 %></span>
+		    Número de preguntas
+		  </li>
+		  <li class="list-group-item text-left">
+		    <span class="badge"><%=datos.s2 %></span>
+		    Comentarios totales
+		  </li>
+
+		  <li class="list-group-item text-left">
+		    <span class="badge"><%=datos.s3 %></span>
+		    Comentarios por pregunta
+		  </li>
+
+		  <li class="list-group-item text-left">
+		    <span class="badge"><%=datos.s4 %></span>
+		    Preguntas sin comentarios
+		  </li>
+
+		  <li class="list-group-item text-left">
+		    <span class="badge"><%=datos.s5 %></span>
+		    Preguntas con comentario
+		  </li>
+		  
+		</ul>
+	</div>
+		<div class="col-md-8" id="divGrafico">
+		<canvas id="myChart" width="190" height="190"></canvas>	
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-md-3"></div>
+	<div id="etiquetasgrafico1" class="col-sm-3 text-left" ></div>	
+	<div id="etiquetasgrafico2" class="col-sm-3 text-left" ></div>	
+	<div id="etiquetasgrafico3" class="col-sm-3 text-left" ></div>	
+	</div>
+	
+  </div>
+</div>
+
+
+		<script type="text/javascript">
+
+		//console.log(<%=datos.g1%>);
+			var infoGrafica = [
+		    {
+		        value: <%=datos.g1%>,
+		        color:"#5E4FA2",
+		        highlight: "#FF5A5E",
+		        label: "Geografia"
+		    },
+		    {
+		        value: <%=datos.g2%>,
+		        color: "#3288BD",
+		        highlight: "#5AD3D1",
+		        label: "Tecnologia"
+		    },
+		    {
+		        value: <%=datos.g3%>,
+		        color: "#9E3142",
+		        highlight: "#FFC870",
+		        label: "Humanidades"
+		    },
+		    {
+		        value: <%=datos.g4%>,
+		        color:"#96C2A5",
+		        highlight: "#FF5A5E",
+		        label: "Ocio"
+		    },
+		    {
+		        value: <%=datos.g5%>,
+		        color: "#aDfE61",
+		        highlight: "#5AD3D1",
+		        label: "Ciencia"
+		    },
+		    {
+		        value: <%=datos.g6%>,
+		        color: "#f6fa3a",
+		        highlight: "#FFC870",
+		        label: "Otro"
+		    }
+		];
+
+		//console.log(infoGrafica);
+			
+		var options ={
+		    //Boolean - Whether we should show a stroke on each segment
+		    segmentShowStroke : true,
+
+		    //String - The colour of each segment stroke
+		    segmentStrokeColor : "#fff",
+
+		    //Number - The width of each segment stroke
+		    segmentStrokeWidth : 1,
+
+		    //Number - The percentage of the chart that we cut out of the middle
+		    percentageInnerCutout : 0, // This is 0 for Pie charts
+
+		    //Number - Amount of animation steps
+		    animationSteps : 100,
+
+		    //String - Animation easing effect
+		    animationEasing : "easeOutBounce",
+
+		    //Boolean - Whether we animate the rotation of the Doughnut
+		    animateRotate : true,
+
+		    //Boolean - Whether we animate scaling the Doughnut from the centre
+		    animateScale : true,
+		    responsive: true,
+		    maintainAspectRatio: false
+    		
+		};
+
+		
+		
+
+		// Get the context of the canvas element we want to select
+		var ctx = document.getElementById("myChart").getContext("2d");				
+		 var mychart = new Chart(ctx).Pie(infoGrafica,options);
+ 
+ 		var etiquetas1 = '<ul class="list-group" style="margin-bottom: 2px;">'
+    		+'<li class="list-group-item " style="border: none;"><span class="badge" style="background-color:<%=datos.c1%>;padding:8px 10px; color:white"><%=datos.g1 %></span> <%=datos.l1%></li>'
+		    +'<li class="list-group-item" style="border: none;"><span class="badge" style="background-color:<%=datos.c2%>;padding:8px 10px; color:white"><%=datos.g2 %></span><%=datos.l2%></li></ul>';
+    	var etiquetas2 = '<ul class="list-group" style="margin-bottom: 2px;">'    
+    		+'<li class="list-group-item" style="border: none;"><span class="badge" style="background-color:<%=datos.c3%>;padding:8px 10px; color:white"><%=datos.g3 %></span><%=datos.l3%></li>'
+    		+'<li class="list-group-item" style="border: none;"> <span class="badge" style="background-color:<%=datos.c4%>;padding:8px 10px; color:white"><%=datos.g4 %></span><%=datos.l4%></li>'    		
+    	var etiquetas3 ='<ul class="list-group" style="margin-bottom: 2px;">'    
+    		+'<li class="list-group-item" style="border: none;"> <span class="badge" style="background-color:<%=datos.c5%>;padding:8px 10px; color:gray"><%=datos.g5 %></span><%=datos.l5%></li>'
+    		+'<li class="list-group-item" style="border: none;"> <span class="badge" style="background-color:<%=datos.c6%>;padding:8px 10px; color:gray"><%=datos.g6 %></span><%=datos.l6%></li></ul>';
+    	
+ 		$("#etiquetasgrafico1").html(etiquetas1);
+ 		$("#etiquetasgrafico2").html(etiquetas2);
+ 		$("#etiquetasgrafico3").html(etiquetas3);
+		</script>

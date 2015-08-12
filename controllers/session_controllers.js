@@ -24,9 +24,13 @@ exports.create = function(req,res) {
 		res.redirect('/login');
 		return;
 	}
-	console.log("USUARIO");
-	console.log(user);
+
 	req.session.user = {id:user.id,username:user.username};	
+	
+	var tiempo = new Date().getTime() / 1000;
+	req.session.user.ultimaActualizacion = tiempo;
+	req.session.user.cerrarSesion = false;
+
 	res.redirect(req.session.redir.toString());
 
 	});

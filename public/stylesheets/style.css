@@ -4,6 +4,12 @@
 	padding: 0; 
 }
 
+#divGrafico{
+
+   margin: 0px auto;
+    border: 1px solid #dedede;    
+}
+
 body                 { 
 	font: 16px Georgia, serif; 
 }

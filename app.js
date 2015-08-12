@@ -35,6 +35,36 @@ app.use(function  (req,res,next) {
     next();
 });
 
+
+//middleware auto-logout
+app.use(function  (req,res,next) {
+    if(res.locals.session.user)   {        
+        // tiempo en segundos        
+        var tiempo = new Date().getTime() / 1000;
+        var tiempoPrevio = res.locals.session.user.ultimaActualizacion ;
+        var inactivo = tiempo - tiempoPrevio; 
+        var segundosInactividadPermitido = 120;
+        if(inactivo > segundosInactividadPermitido )
+            {                
+                res.locals.session.user.cerrarSesion=true;
+                res.locals.session.errors = [{"message":"La session ha expirado por inactividad. "}];
+
+            }
+            else{
+
+                res.locals.session.user.cerrarSesion=false;
+                res.locals.session.user.ultimaActualizacion = tiempo;
+                
+            }
+
+        //console.log(res.locals.session);    
+    }
+
+
+    next();    
+
+});
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler

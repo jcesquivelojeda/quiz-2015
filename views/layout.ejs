@@ -14,11 +14,22 @@
         media='only screen and (max-width: 480px)' 
         href='/stylesheets/smartphone.css' />
         <script type="text/javascript" src="/javascripts/jquery-1.11.3.js"></script>
+        <script type="text/javascript" src="/javascripts/Chart.js"></script>
 <script type="text/javascript">
+
+
+var cerrarSesion = function(){
+	//console.log("CERRANDO SESION");
+	setTimeout('redireccionar()',3000);
+}
+
+var redireccionar = function(){
+	document.location='../logout';
+}
 
 var activarBoton = function(nombre)
 {
-  console.log("activarBoton: "+nombre);
+  //console.log("activarBoton: "+nombre);
 
   var hijos =($(this).siblings());
 
@@ -41,7 +52,7 @@ $(document).ready(
   	// y deshabilita el css activado con addClass activando el seteado por default en el html
   	//se utiliza en su lugar las rutas especificas de las paginas visitadas 
 
-
+	
     var ruta = window.location.pathname; 
    
 	if(ruta === "/")
@@ -50,23 +61,43 @@ $(document).ready(
 	if(ruta.indexOf("/quizes")>=0)
 		activarBoton("preguntas");
 	else
+	if(ruta === "/statistics")
+		activarBoton("estadisticas");
+	else
 	if(ruta === "/author")
 		activarBoton("creditos");	
 
   }  
 )
-
 </script>
-  </head>
-  <body>
-  <div id="page-wrap">
+
+<% if(session.user && session.user.cerrarSesion){%>
+  <body onload="setTimeout('cerrarSesion()',100);" >      
+    <div id="page-wrap">
 	<header class="main" id="h1">
+
+  		<div id="alerta" class="alert alert-danger alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  <% for(var i in session.errors) { %>
+		  <span><strong><%= session.errors[i].message %> </strong> </span>
+		  <%} %> 
+  		</div>
+   <%} else {%> 
+	<body >
+	<div id="page-wrap">
+	<header class="main" id="h1">	
+<%} %>   
+
+
+	
 	<div class="text-right">
 	<% if(!session.user) { %>
 		
 		<span class="well well-sm btn-block "  style="a {color: #FFF;}"><a class="btn btn-primary" href="/login">Iniciar Sesion</a></span>
 
 	<% } else { %>
+
+
 	<span   class="well well-sm btn-block " style="a {color: #FFF;}"><span class="glyphicon glyphicon-user"></span> <span style="color:#6e6e6e;padding-right:10px;"> <%= session.user.username %></span> <a class="btn btn-primary" href="/logout">Cerrar Sesion</a></span>
 	
 	<% }  %>
@@ -78,6 +109,7 @@ $(document).ready(
 	<ul role="navigation" id="navegacion" class="nav nav-pills nav-stacked">
 	  <li id="inicio" role="presentation" ><a href="/">Inicio</a></li>
 	  <li id="preguntas" role="presentation" ><a href="/quizes">Preguntas</a></li>
+	  <li id="estadisticas" role="presentation" ><a href="/statistics">Estadisticas</a></li>
 	  <li id="creditos" role="presentation" ><a href="/author">Creditos</a></li>
 	</ul>
 
